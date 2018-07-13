@@ -1,0 +1,41 @@
+{
+  "name": "starter-cicd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --no-cache",
+    "start": "webpack-dev-server --progress --colors --inline --env.dev",
+    "build": "webpack -p --progress --env.prod",
+    "deploy:prod": "yarn build && aws s3 sync build/ s3://tjcicd --delete",
+    "deploy:stg": "yarn build && aws s3 sync build/ s3://stgtjcicd --delete"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thraithep/starter-cicd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thraithep/starter-cicd/issues"
+  },
+  "homepage": "https://github.com/Thraithep/starter-cicd#readme",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.16.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
